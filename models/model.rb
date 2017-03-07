@@ -8,6 +8,6 @@ end
 petfinder = Petfinder::Client.new
 
 
-pets = petfinder.find_pets('dog', '11224')
+pets = petfinder.find_pets('bird', '11224')
 puts pets.count
 puts pets.first.name
