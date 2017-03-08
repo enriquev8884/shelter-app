@@ -19,7 +19,8 @@ class ApplicationController < Sinatra::Base
   end
   
   post 'result' do
-    
+    directions = params[:directions]
+    @user_choices = Playlist.new(directions)
     erb :result
   end
 end
