@@ -4,4 +4,5 @@ gem 'pry'
 gem 'sinatra'
 gem 'shotgun'
 gem 'dotenv'
+gem 'petfinder'
  

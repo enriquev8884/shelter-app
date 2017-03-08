@@ -3,7 +3,16 @@ GEM
   specs:
     coderay (1.1.1)
     dotenv (2.2.0)
+    excon (0.55.0)
     method_source (0.8.2)
+    mini_portile2 (2.1.0)
+    nokogiri (1.6.8)
+      mini_portile2 (~> 2.1.0)
+      pkg-config (~> 1.1.7)
+    petfinder (1.0.3)
+      excon (~> 0.26)
+      nokogiri (~> 1.6)
+    pkg-config (1.1.7)
     pry (0.10.4)
       coderay (~> 1.1.0)
       method_source (~> 0.8.1)
@@ -25,9 +34,10 @@ PLATFORMS
 
 DEPENDENCIES
   dotenv
+  petfinder
   pry
   shotgun
   sinatra
 
 BUNDLED WITH
-   1.13.2
+   1.14.3
