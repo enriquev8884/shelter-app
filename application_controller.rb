@@ -13,9 +13,8 @@ class ApplicationController < Sinatra::Base
   post '/result' do
     user_zip = params[:zipcode]
     user_animal = params[:animal]
-    @user_choices = Playlist.new(user_zip,user_animal)
-    
-    erb :result
+    @user_choices = Pet_finder.new(user_animal,user_zip)
+    erb :results
   end
   
 end
