@@ -1,0 +1,30 @@
+body {
+    
+    font-variant: small-caps;
+    
+}
+
+h1 {
+    color: white;
+    text-align: center;
+        text-shadow: 2px 2px 5px red;
+transition: width 2s, height 4s;
+}
+h1:hover {
+    width: 300px;
+    
+}
+
+
+p {
+    font-family: verdana;
+    font-size: 20px;
+}
+.container-fluid {
+  border-width : 15px;
+  border-radius: 12px;
+  border: 25px solid gray;
+  padding: 20px;
+  margin: auto; 
+  background-color: lightblue;
+}
