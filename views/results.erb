@@ -16,23 +16,11 @@
     <script src="js/script.js"></script>
   </head>
   <body>
-    <center>
-   <div class="container-fluid">
-      <h1>Welcome to Petfinder</h1>
-      <h3>What would you want to see!</h3>
-      <form method="post" action="/result">
-        Zip code : <input type="number" name="zipcode" size="30"><br>
-        Type of animal: <br>
-         <input type="radio" name="animal" value="cat"> Cat<br>
-         <input type="radio" name="animal" value="dog"> Dog<br>
-        <input type="submit" value="search">
-      </form>
-    </div>
-  </center>
-  </body>
-</html>
 
+    
+    <div class="container-fluid">
+      <h1><%=@user_choices.rick.first%></h1>
+    </div>
     
   </body>
 </html>
-
