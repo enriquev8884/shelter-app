@@ -2,6 +2,7 @@ require 'google_maps_service'
 require 'pp'
 # Setup API keys
 gmaps = GoogleMapsService::Client.new(key: 'AIzaSyBH9tBC1IeaPLSUGKXuVhYgBAYJrr2r8LE')
+# https://maps.googleapis.com/maps/api/place/textsearch/json?query=mightymutts&key=AIzaSyBH9tBC1IeaPLSUGKXuVhYgBAYJrr2r8LE
 
 # Setup client IDs
 # use free google key
@@ -17,19 +18,32 @@ gmaps = GoogleMapsService::Client.new(
     retry_timeout: 20,      # Timeout for retrying failed request
     queries_per_second: 10  # Limit total request per second
 )
-
-routes = gmaps.directions(
-    '1600 Amphitheatre Pkwy, Mountain View, CA 94043, USA',
-    '2400 Amphitheatre Parkway, Mountain View, CA 94043, USA',
-    mode: 'driving', # takes in m=user transportation mode "replace driving with param" <-- DAYSI DO THIS INSIDE OF RESULTS
-    alternatives: false)
-@distance_html=[]
-routes[0][:legs][0][:steps].each do |direction_hash|
+# class ShelterDirection
+#     attr_reader :street, :city, :state, :zipcode
+#     def initialize(street,city,state,zipcode)
+#         @street = street
+#         @city = city
+#         @state = state
+#         # @zipcode = zipcode
+#         route
+#     end
+#     def route
+        routes = gmaps.directions(
+        '2300 Amphitheatre Parkway, Mountain View, CA 94043, USA', #user address
+        '2400 Amphitheatre Parkway, Mountain View, CA 94043, USA', #shelter address
+         mode: 'driving', # takes in m=user transportation mode "replace driving with param" <-- DAYSI DO THIS INSIDE OF RESULTS
+        alternatives: false)
+        @distance_html=[]
+        routes[0][:legs][0][:steps].each do |direction_hash|
     
-    @distance_html << direction_hash[:html_instructions]
-end
+        @distance_html << direction_hash[:html_instructions]
+        end
+    # end
 pp @distance_html
+# end
 
+# address = ShelterDirection.new("430 E 9th St","New York", "NY", "10009")
+# pp address
 
 
 
