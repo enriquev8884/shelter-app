@@ -21,7 +21,7 @@ gmaps = GoogleMapsService::Client.new(
 routes = gmaps.directions(
     '1600 Amphitheatre Pkwy, Mountain View, CA 94043, USA',
     '2400 Amphitheatre Parkway, Mountain View, CA 94043, USA',
-    mode: 'walking',
+    mode: 'driving', # takes in m=user transportation mode "replace driving with param" <-- DAYSI DO THIS INSIDE OF RESULTS
     alternatives: false)
 @distance_html=[]
 routes[0][:legs][0][:steps].each do |direction_hash|
