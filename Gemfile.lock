@@ -42,11 +42,8 @@ PLATFORMS
 
 DEPENDENCIES
   dotenv
-<<<<<<< HEAD
   google_maps_service
-=======
   petfinder
->>>>>>> 0ed9caf35568c4def29f958385deb84abdf668e7
   pry
   shotgun
   sinatra
