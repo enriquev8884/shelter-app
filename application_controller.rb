@@ -2,7 +2,8 @@ require 'dotenv/load'
 require 'bundler'
 Bundler.require
 
-require_relative 'models/model.rb', 'models/google_maps.rb'
+require_relative 'models/model.rb'
+require_relative 'models/google-maps.rb'
 
 class ApplicationController < Sinatra::Base
 
@@ -22,7 +23,7 @@ class ApplicationController < Sinatra::Base
     city = params[:city]
     state = params[:state]
     zipcode = params[:zipcode]
-    @user_choices = ShelterDirection.new(street,city,state,zipcode)
-    erb :result
+    @user_directions = ShelterDirection.new(street,city,state,zipcode)
+    erb :direction_results
   end
 end
