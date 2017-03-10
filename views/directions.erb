@@ -1,10 +1,48 @@
-#put in descriptions and animals
-Transportation:
-Walk or drive
+<!--#put in descriptions and animals-->
+<!--Transportation:-->
+<!--Walk or drive-->
 
-asks for full address
-#takes user input
+<!--asks for full address-->
+<!--#takes user input-->
 
-BIG REMINDER:
-set up secret and key
-run on heroku
+<!--BIG REMINDER:-->
+<!--set up secret and key-->
+<!--run on heroku-->
+
+
+<!DOCTYPE html>
+<html>
+  <head>
+    <meta charset="UTF-8">
+    <title>title</title>
+    <!-- bootstrap CSS -->
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css">
+    <!-- bootstrap JS -->
+    <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js"></script>
+    <!-- jQuery -->
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.1.1/jquery.min.js"></script>
+    
+    <!-- custom css -->
+    <link rel="stylesheet" href="css/style.css" type="text/css">
+    <!-- custom JS -->
+    <script src="js/script.js"></script>
+  </head>
+  <body>
+    <center>
+   <div class="container-fluid">
+      <h1>What is your address?</h1>
+      <form method="post" action="/user_address">
+        <input type="number" name="street"><br>
+        <input type="number" name="city"><br>
+        <input type="number" name="state"><br>
+        <input type="submit" value="zipcode"><br>
+      </form>
+    </div>
+  </center>
+  </body>
+</html>
+
+    
+  </body>
+</html>
+
