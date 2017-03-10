@@ -8,7 +8,7 @@ require_relative 'models/google-maps.rb'
 class ApplicationController < Sinatra::Base
 
   get '/' do
-    erb :index
+    erb :directions
   end
   
   post '/result' do

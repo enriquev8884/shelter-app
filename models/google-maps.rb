@@ -1,4 +1,6 @@
 require 'google_maps_service'
+require 'net/http'
+require 'json'
 require 'pp'
 # Setup API keys
 @@gmaps = GoogleMapsService::Client.new(key: 'AIzaSyBH9tBC1IeaPLSUGKXuVhYgBAYJrr2r8LE')
