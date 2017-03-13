@@ -1,20 +1,22 @@
 require 'google_maps_service'
+require 'net/http'
+require 'json'
 require 'pp'
 # Setup API keys
-@@gmaps = GoogleMapsService::Client.new(key: 'AIzaSyBH9tBC1IeaPLSUGKXuVhYgBAYJrr2r8LE')
+@@gmaps = GoogleMapsService::Client.new(key: ENV["GOOGLE_KEY"])
 # https://maps.googleapis.com/maps/api/place/textsearch/json?query=mightymutts&key=AIzaSyBH9tBC1IeaPLSUGKXuVhYgBAYJrr2r8LE
 
 # Setup client IDs
 # use free google key
 @@gmaps = GoogleMapsService::Client.new(
     #created web client 1
-    client_id: '689071292642-vrt9qnp61vp1s89e9c97k7hlr0epanb0.apps.googleusercontent.com',
-    client_secret: 'Ql3l6FqTF69HptZ--cV1kaKT'
+    client_id: ENV["G_CLIENT_ID"],
+    client_secret: ENV["G_CLIENT_SECRET"]
 )
 
 # More complex setup
 @@gmaps = GoogleMapsService::Client.new(
-    key: 'AIzaSyD64Rqhz32vjWAMqSWf_fZ538eTlmOF2VM', #free google maps key
+    key: ENV["G_FREE_KEY"], #free google maps key
     retry_timeout: 20,      # Timeout for retrying failed request
     queries_per_second: 10  # Limit total request per second
 )

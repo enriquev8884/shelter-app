@@ -31,6 +31,9 @@ class Pet_finder
       shelter = @@petfinder.shelter(name)
       @pets_shelter << shelter.name
     end
+    def shelter_list
+      shelters << @pets_shelter
+    end
     
   end
   
