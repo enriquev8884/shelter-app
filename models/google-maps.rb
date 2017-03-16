@@ -2,6 +2,13 @@ require 'google_maps_service'
 require 'net/http'
 require 'json'
 require 'pp'
+  @@petfinder = Petfinder::Client.new
+  url = 'https://maps.googleapis.com/maps/api/place/textsearch/json?query=mightymutts&key=AIzaSyBH9tBC1IeaPLSUGKXuVhYgBAYJrr2r8LE'
+  uri = URI(url)
+  response = Net::HTTP.get(uri)
+  shelther_info = JSON.parse(response)
+  @@shelter_addresss = shelther_info["results"][0]["formatted_address"]
+  
 # Setup API keys
 @@gmaps = GoogleMapsService::Client.new(key: ENV["GOOGLE_KEY"])
 # https://maps.googleapis.com/maps/api/place/textsearch/json?query=mightymutts&key=AIzaSyBH9tBC1IeaPLSUGKXuVhYgBAYJrr2r8LE
