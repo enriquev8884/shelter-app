@@ -22,7 +22,7 @@ require 'pp'
 )
 class ShelterDirection
     attr_reader :address, :distance_html, :steps
-    def initialize(street,city,state,zipcode)
+    def initialize(street,city,state,zipcode,trans_method)
         address_array = [street,city,state,zipcode,"USA"]
         @address= address_array.join(", ")
         route
@@ -30,8 +30,8 @@ class ShelterDirection
     def route
         routes = @@gmaps.directions(
         @address, #user address
-        '2400 Amphitheatre Parkway, Mountain View, CA 94043, USA', #shelter address
-         mode: 'driving', # takes in m=user transportation mode "replace driving with param" <-- DAYSI DO THIS INSIDE OF RESULTS
+        @@shelter_address, #shelter address
+         mode: @trans_method, # takes in m=user transportation mode "replace driving with param" <-- DAYSI DO THIS INSIDE OF RESULTS
         alternatives: false)
         @distance_html=[]
         routes[0][:legs][0][:steps].each do |direction_hash|
@@ -39,6 +39,7 @@ class ShelterDirection
         @distance_html << direction_hash[:html_instructions]
         @steps = @distance_html.length
         end
+        # @shelter_address = 
     end
 end
 

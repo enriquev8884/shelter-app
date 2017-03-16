@@ -8,7 +8,7 @@ require 'petfinder'
   
 class Pet_finder
   
-  attr_reader:user_animal, :user_zip, :pets, :pets_name, :pets_shelter
+  attr_reader:user_animal, :user_zip, :pets, :pets_name, :pets_shelter, :trans_method
   
   def initialize(user_animal, user_zip)
     @pets = @@petfinder.find_pets(user_animal, user_zip)

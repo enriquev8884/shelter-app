@@ -8,7 +8,7 @@ require_relative 'models/google-maps.rb'
 class ApplicationController < Sinatra::Base
 
   get '/' do
-    erb :index
+    erb :directions
   end
   
   post '/result' do
@@ -23,7 +23,8 @@ class ApplicationController < Sinatra::Base
     city = params[:city]
     state = params[:state]
     zipcode = params[:zipcode]
-    @user_directions = ShelterDirection.new(street,city,state,zipcode)
+    trans_method = params[:trans_method]
+    @user_directions = ShelterDirection.new(street,city,state,zipcode,trans_method)
     erb :direction_results
   end
 end
