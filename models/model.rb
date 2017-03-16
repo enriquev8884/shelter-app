@@ -1,10 +1,17 @@
 # https://github.com/ehutzelman/petfinder
+require 'net/http'
+require 'json'
 require 'petfinder'
   Petfinder.configure do |config|
     config.api_key = ENV["PET_KEY"]
     config.api_secret = ENV["PET_SECRET"]
   end
   @@petfinder = Petfinder::Client.new
+  url = 'https://maps.googleapis.com/maps/api/place/textsearch/json?query=mightymutts&key=AIzaSyBH9tBC1IeaPLSUGKXuVhYgBAYJrr2r8LE'
+  uri = URI(url)
+  response = Net::HTTP.get(uri)
+  shelther_info = JSON.parse(response)
+  @@shelter_addresss = shelther_info["results"][0]["formatted_address"]
   
 class Pet_finder
   
@@ -38,5 +45,6 @@ class Pet_finder
   end
   
 end
+
 
 
