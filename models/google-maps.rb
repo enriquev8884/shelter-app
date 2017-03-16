@@ -31,7 +31,7 @@ class ShelterDirection
         routes = @@gmaps.directions(
         @address, #user address
         @@shelter_address, #shelter address
-         mode: @trans_method, # takes in m=user transportation mode "replace driving with param" <-- DAYSI DO THIS INSIDE OF RESULTS
+         mode: @trans_method, # takes in m=user transportation mode "replace driving with param"
         alternatives: false)
         @distance_html=[]
         routes[0][:legs][0][:steps].each do |direction_hash|
