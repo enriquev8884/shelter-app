@@ -1,9 +1,13 @@
 # https://github.com/ehutzelman/petfinder
+require 'net/http'
+require 'json'
 require 'petfinder'
+
   Petfinder.configure do |config|
     config.api_key = ENV["PET_KEY"]
     config.api_secret = ENV["PET_SECRET"]
   end
+    @@petfinder = Petfinder::Client.new
 class Pet_finder
   
   attr_reader:user_animal, :user_zip, :pets, :pets_name, :pets_shelter, :trans_method

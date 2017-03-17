@@ -1,13 +1,21 @@
-require 'google_maps_service'
 require 'net/http'
 require 'json'
+require 'google_maps_service'
 require 'pp'
-  @@petfinder = Petfinder::Client.new
+require 'petfinder'
+
   url = 'https://maps.googleapis.com/maps/api/place/textsearch/json?query=mightymutts&key=AIzaSyBH9tBC1IeaPLSUGKXuVhYgBAYJrr2r8LE'
   uri = URI(url)
   response = Net::HTTP.get(uri)
-  shelther_info = JSON.parse(response)
-  @@shelter_addresss = shelther_info["results"][0]["formatted_address"]
+  shelter_info = JSON.parse(response)
+  shelter_address = shelter_info["results"][0]["formatted_address"]
+  add_fix = shelter_address.split(",")
+  add_fix.delete_at(3)
+  add_fix.push(" USA")
+  add_fix.join(", ")
+  @@shelter_address = add_fix.join(", ")
+  
+  
   
 # Setup API keys
 @@gmaps = GoogleMapsService::Client.new(key: ENV["GOOGLE_KEY"])
@@ -28,8 +36,9 @@ require 'pp'
     queries_per_second: 10  # Limit total request per second
 )
 class ShelterDirection
-    attr_reader :address, :distance_html, :steps
+    attr_reader :address, :distance_html, :steps, :trans_method
     def initialize(street,city,state,zipcode,trans_method)
+        @trans_method = trans_method
         address_array = [street,city,state,zipcode,"USA"]
         @address= address_array.join(", ")
         route
@@ -38,8 +47,9 @@ class ShelterDirection
         routes = @@gmaps.directions(
         @address, #user address
         @@shelter_address, #shelter address
-         mode: @trans_method, # takes in m=user transportation mode "replace driving with param"
+         mode:'driving', # takes in m=user transportation mode "replace driving with param"
         alternatives: false)
+        
         @distance_html=[]
         routes[0][:legs][0][:steps].each do |direction_hash|
     

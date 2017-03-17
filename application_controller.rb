@@ -8,8 +8,12 @@ require_relative 'models/google-maps.rb'
 class ApplicationController < Sinatra::Base
 
   get '/' do
-    erb :directions
+    erb :index
   end
+  
+  get "/directions.erb" do
+  erb :directions
+end
   
   post '/result' do
     user_zip = params[:zipcode]
