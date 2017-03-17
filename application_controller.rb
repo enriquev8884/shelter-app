@@ -11,6 +11,10 @@ class ApplicationController < Sinatra::Base
     erb :index
   end
   
+  get "/directions.erb" do
+  erb :directions
+end
+  
   post '/result' do
     user_zip = params[:zipcode]
     user_animal = params[:animal]
@@ -23,7 +27,8 @@ class ApplicationController < Sinatra::Base
     city = params[:city]
     state = params[:state]
     zipcode = params[:zipcode]
-    @user_directions = ShelterDirection.new(street,city,state,zipcode)
+    trans_method = params[:trans_method]
+    @user_directions = ShelterDirection.new(street,city,state,zipcode,trans_method)
     erb :direction_results
   end
 end
