@@ -22,7 +22,12 @@
       <% i = -1%>
       <% 25.times do%>
         <% i += 1%>
-        <h1><%= @user_choices.pets_name[i]%> <%= @user_choices.pets_shelter[i]%></h1>
+        <h1><%= @user_choices.pets_name[i]%></h1>
+        <% if @user_choices.pets_shelter[i] == "Mighty Mutts"%>
+          <a href="/directions.erb"><%= @user_choices.pets_shelter[i]%></a>
+        <% else%>
+          <h1><%= @user_choices.pets_shelter[i]%></h1>
+        <% end%>
         <!--<p>Would you like to go to this shelter</p>-->
       <% end%>
     </div>
